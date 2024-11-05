@@ -1,4 +1,0 @@
-apiVersion: v2
-name: snapshot-config
-description: A Helm chart for shared CRD template logic
-version: 0.1.0

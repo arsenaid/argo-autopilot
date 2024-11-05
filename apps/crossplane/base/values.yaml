@@ -1,3 +1,0 @@
-# crossplane/base/values.yaml
-args:
-  - "--enable-external-secret-stores"
