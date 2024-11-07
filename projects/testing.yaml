@@ -45,24 +45,6 @@ spec:
         spec:
           destination: {}
           project: ""
-  - git:
-      files:
-      - path: apps/**/testing/config_dir.json
-      repoURL: https://github.com/arsenaid/argo-autopilot.git
-      requeueAfterSeconds: 20
-      revision: ""
-      template:
-        metadata: {}
-        spec:
-          destination: {}
-          project: ""
-          source:
-            directory:
-              exclude: '{{ exclude }}'
-              include: '{{ include }}'
-              jsonnet: {}
-              recurse: true
-            repoURL: ""
   syncPolicy: {}
   template:
     metadata:
@@ -91,3 +73,31 @@ spec:
           prune: true
           selfHeal: true
 status: {}
+
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: crossplane
+  namespace: argocd
+spec:
+  project: default
+  source:
+    repoURL: https://charts.crossplane.io/stable
+    targetRevision: stable
+    chart: crossplane
+    helm:
+      values: |
+        crossplane:
+          enabled: true
+          provider:
+            azure:
+              enabled: true
+              version: 0.17.0
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: crossplane-system
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
