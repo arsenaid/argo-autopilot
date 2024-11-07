@@ -84,7 +84,7 @@ spec:
   project: default
   source:
     repoURL: https://charts.crossplane.io/stable
-    targetRevision: stable
+    targetRevision: "1.18.0"
     chart: crossplane
     helm:
       values: |
