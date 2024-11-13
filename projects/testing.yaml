@@ -86,14 +86,6 @@ spec:
     repoURL: https://charts.crossplane.io/stable
     targetRevision: "1.18.0"
     chart: crossplane
-    helm:
-      values: |
-        crossplane:
-          enabled: true
-          provider:
-            azure:
-              enabled: true
-              version: 0.17.0
   destination:
     server: https://kubernetes.default.svc
     namespace: crossplane-system
@@ -102,3 +94,12 @@ spec:
     automated:
       prune: true
       selfHeal: true
+
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure
+  namespace: crossplane-system
+spec:
+  package: crossplane/provider-azure:v0.17.0
