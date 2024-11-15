@@ -78,28 +78,27 @@ status: {}
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: crossplane
+  name: crossplane-bootstrap
   namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
-    repoURL: https://charts.crossplane.io/stable
-    targetRevision: "1.18.0"
-    chart: crossplane
+    repoURL: https://github.com/arsenaid/argo-autopilot
+    targetRevision: HEAD
+    path: bootstrap/crossplane
   destination:
     server: https://kubernetes.default.svc
     namespace: crossplane-system
-    createNamespace: true
   syncPolicy:
     automated:
-      prune: true
-      selfHeal: true
-
----
-apiVersion: pkg.crossplane.io/v1
-kind: Provider
-metadata:
-  name: provider-azure
-  namespace: crossplane-system
-spec:
-  package: crossplane/provider-azure:v0.17.0
+      prune: true    
+    syncOptions:
+    - CreateNamespace=true
+    retry:
+      limit: 1
+      backoff:
+        duration: 5s 
+        factor: 2 
+        maxDuration: 1m
