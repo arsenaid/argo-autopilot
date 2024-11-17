@@ -1,0 +1,10 @@
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-azure
+  namespace: crossplane-system
+spec:
+  package: crossplane/provider-azure:v0.17.0
+  packagePullPolicy: IfNotPresent # Only download the package if it isn’t in the cache.
+  revisionActivationPolicy: Automatic # Otherwise our Provider never gets activate & healthy
+  revisionHistoryLimit: 1
