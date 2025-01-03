@@ -1,6 +1,9 @@
-apiVersion: azure.crossplane.io/v1alpha3
+apiVersion: azure.upbound.io/v1beta1
 kind: ResourceGroup
 metadata:
-  name: example-rg
+  name: example-resources-random
 spec:
-  location: EastUS
+  forProvider:
+    location: East US
+    tags:
+      provisioner: crossplane
