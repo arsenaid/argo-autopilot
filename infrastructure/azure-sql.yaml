@@ -20,7 +20,7 @@ metadata:
   namespace: crossplane-system
 type: Opaque
 data:
-  password: <base64-encoded-password>
+  password: kuku
 ---
 apiVersion: sql.azure.upbound.io/v1beta1
 kind: MSSQLDatabase
