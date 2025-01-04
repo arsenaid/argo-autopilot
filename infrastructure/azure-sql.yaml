@@ -1,7 +1,7 @@
 apiVersion: sql.azure.upbound.io/v1beta1
 kind: MSSQLServer
 metadata:
-  name: example-sqlserver
+  name: arsen-sqlserver-2025
 spec:
   forProvider:
     administratorLogin: 4dm1n157r470r
@@ -28,7 +28,7 @@ metadata:
   name: example-sqldatabase
 spec:
   forProvider:
-    serverName: example-sqlserver
+    serverName: arsen-sqlserver-2025
     maxSizeGb: 10
     sku:
       name: S0
