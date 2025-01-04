@@ -28,7 +28,6 @@ metadata:
   name: example-sqldatabase
 spec:
   forProvider:
-    serverName: arsen-sqlserver-2025
     maxSizeGb: 10
     sku:
       name: S0
