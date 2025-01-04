@@ -9,7 +9,7 @@ spec:
       name: sql-password
       key: password
       namespace: crossplane-system
-    location: West Europe
+    location: East US
     resourceGroupName: example-rg
     version: "12.0"
 ---
@@ -28,8 +28,10 @@ metadata:
   name: example-sqldatabase
 spec:
   forProvider:
-    resourceGroupName: example-rg
     serverName: example-sqlserver
-    maxSizeGB: 10
+    serverIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: primary
+    maxSizeGb: 10
     sku:
       name: S0
