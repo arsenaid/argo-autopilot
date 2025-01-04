@@ -32,3 +32,6 @@ spec:
     maxSizeGb: 10
     sku:
       name: S0
+    serverIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: arsen-sqlserver-2025
