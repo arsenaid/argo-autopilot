@@ -2,6 +2,8 @@ apiVersion: sql.azure.upbound.io/v1beta1
 kind: MSSQLServer
 metadata:
   name: arsen-sqlserver-2025
+  labels:
+    testing.upbound.io/example-name: arsen-test-srv
 spec:
   forProvider:
     administratorLogin: 4dm1n157r470r
@@ -31,5 +33,6 @@ spec:
     maxSizeGb: 10
     sku:
       name: S0
-    serverIdRef:
-      name: arsen-sqlserver-2025
+    serverIdSelector:
+      matchLabels:
+        testing.upbound.io/example-name: arsen-test-srv
