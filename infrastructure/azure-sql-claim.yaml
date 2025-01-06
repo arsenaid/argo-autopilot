@@ -1,0 +1,9 @@
+# apiVersion: database.example.org/v1alpha1
+# kind: AzureSQLDatabase
+# metadata:
+#   name: my-app-database
+#   namespace: dev
+# spec:
+#   parameters:
+#     databaseName: mydatabase
+#     maxSizeGB: 10

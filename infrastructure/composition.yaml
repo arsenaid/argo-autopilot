@@ -1,0 +1,78 @@
+apiVersion: apiextensions.crossplane.io/v1
+kind: Composition
+metadata:
+  name: azuresqldatabase-composition
+spec:
+  compositeTypeRef:
+    apiVersion: database.example.org/v1alpha1
+    kind: CompositeAzureSQLDatabase
+  resources:
+    - name: resource-group
+      base:
+        apiVersion: azure.upbound.io/v1beta1
+        kind: ResourceGroup
+        spec:
+          metadata:
+            name: my-resource-group
+          forProvider:
+            location: East US
+          providerConfigRef:
+            name: default
+        patches:
+          - fromFieldPath: "metadata.name"
+            toFieldPath: "spec.forProvider.resourceGroupName"
+    - name: admin-password
+      base:
+        apiVersion: v1
+        kind: Secret
+        spec:
+          type: Opaque
+          stringData:
+            password: RamenN00dles
+          metadata:
+            name: sqlserver-creds
+            namespace: crossplane-system
+        patches:
+          - fromFieldPath: "stringData.password"
+            toFieldPath: "spec.forProvider.administratorLoginPassword"
+    - name: sqlserver
+      base:
+        apiVersion: database.azure.crossplane.io/v1beta1
+        kind: MSSQLServer
+        metadata:
+          name: arsen-sqlserver-2025
+          labels:
+            testing.upbound.io/example-name: arsen-test-srv
+        spec:
+          forProvider:
+            administratorLogin: myadmin
+            administratorLoginPasswordSecretRef:
+              name: sql-password
+              key: password
+              namespace: crossplane-system
+            location: East US
+            resourceGroupName: my-resource-group
+            version: "12.0"
+          providerConfigRef:
+            name: default
+      patches:
+        - fromFieldPath: "spec.parameters.databaseName"
+          toFieldPath: "metadata.name"
+    - name: sqldatabase
+      base:
+        apiVersion: database.azure.crossplane.io/v1beta1
+        kind: MSSQLDatabase
+        spec:
+          forProvider:
+            sku:
+              name: S0
+            serverIdSelector:
+              matchLabels:
+                testing.upbound.io/example-name: arsen-test-srv
+          providerConfigRef:
+            name: default
+      patches:
+        - fromFieldPath: "spec.parameters.databaseName"
+          toFieldPath: "metadata.name"
+        - fromFieldPath: "spec.parameters.maxSizeGB"
+          toFieldPath: "spec.forProvider.maxSizeGB"
