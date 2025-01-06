@@ -1,13 +1,13 @@
-apiVersion: database.example.org/v1alpha1
-kind: Azuresql
-metadata:
-  name: my-app-database
-spec:
-  compositionRef:
-    name: azuresql-db-composition
-  writeConnectionSecretToRef:
-    namespace: crossplane-system
-    name: db-conn
-  parameters:
-    databaseName: mydatabase
-    maxSizeGB: 5
+# apiVersion: database.example.org/v1alpha1
+# kind: Azuresql
+# metadata:
+#   name: my-app-database
+# spec:
+#   compositionRef:
+#     name: azuresql-db-composition
+#   writeConnectionSecretToRef:
+#     namespace: crossplane-system
+#     name: db-conn
+#   parameters:
+#     databaseName: mydatabase
+#     maxSizeGB: 5
