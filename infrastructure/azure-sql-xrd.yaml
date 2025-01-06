@@ -1,7 +1,8 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: CompositeResourceDefinition
 metadata:
-  name: xsql.database.example.org
+  #'<plural>.<group>'
+  name: xsqls.database.example.org
 spec:
   group: database.example.org
   names:
