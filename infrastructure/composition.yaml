@@ -4,7 +4,7 @@ metadata:
   name: azuresql-db-composition
 spec:
   compositeTypeRef:
-    apiVersion: xsql.database.example.org/v1alpha1
+    apiVersion: xsqls.database.example.org/v1alpha1
     kind: Xsql
   writeConnectionSecretsToNamespace: crossplane-system
   resources:
