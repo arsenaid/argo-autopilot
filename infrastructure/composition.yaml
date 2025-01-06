@@ -38,7 +38,7 @@ spec:
             toFieldPath: "spec.forProvider.administratorLoginPassword"
     - name: sqlserver
       base:
-        apiVersion: database.azure.crossplane.io/v1beta1
+        apiVersion: sql.azure.upbound.io/v1beta1
         kind: MSSQLServer
         metadata:
           name: arsen-sqlserver-2025
@@ -61,7 +61,7 @@ spec:
           toFieldPath: "metadata.name"
     - name: sqldatabase
       base:
-        apiVersion: database.azure.crossplane.io/v1beta1
+        apiVersion: sql.azure.upbound.io/v1beta1
         kind: MSSQLDatabase
         spec:
           forProvider:
