@@ -1,12 +1,12 @@
 apiVersion: database.example.org/v1alpha1
-kind: AzureSQLDatabase
+kind: Azuresql
 metadata:
   name: my-app-database
-  namespace: dev
 spec:
   compositionRef:
-    name: azuresqldatabase-composition
+    name: azuresql-db-composition
   writeConnectionSecretToRef:
+    namespace: crossplane-system
     name: db-conn
   parameters:
     databaseName: mydatabase

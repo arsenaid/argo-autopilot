@@ -1,11 +1,11 @@
 apiVersion: apiextensions.crossplane.io/v1
 kind: Composition
 metadata:
-  name: azuresqldatabase-composition
+  name: azuresql-db-composition
 spec:
   compositeTypeRef:
     apiVersion: database.example.org/v1alpha1
-    kind: CompositeAzureSQLDatabase
+    kind: Xsql
   writeConnectionSecretsToNamespace: crossplane-system
   resources:
     - name: resource-group
