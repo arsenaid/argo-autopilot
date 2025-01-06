@@ -6,10 +6,10 @@ metadata:
 spec:
   group: database.example.org
   names:
-    kind: xsql
+    kind: Xsql
     plural: xsqls
   claimNames:
-    kind: azuresql
+    kind: Azuresql
     plural: azuresqls
   versions:
     - name: v1alpha1
