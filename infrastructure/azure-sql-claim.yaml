@@ -1,4 +1,4 @@
-apiVersion: xsqls.database.example.org/v1alpha1
+apiVersion: database.example.org/v1alpha1
 kind: Azuresql
 metadata:
   name: my-app-database
