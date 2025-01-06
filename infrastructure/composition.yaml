@@ -12,9 +12,9 @@ spec:
       base:
         apiVersion: azure.upbound.io/v1beta1
         kind: ResourceGroup
+        metadata:
+          name: my-resource-group
         spec:
-          metadata:
-            name: my-resource-group
           forProvider:
             location: East US
           providerConfigRef:
@@ -26,13 +26,13 @@ spec:
       base:
         apiVersion: v1
         kind: Secret
+        metadata:
+          name: sqlserver-creds
+          namespace: crossplane-system
         spec:
           type: Opaque
           stringData:
             password: RamenN00dles
-          metadata:
-            name: sqlserver-creds
-            namespace: crossplane-system
         patches:
           - fromFieldPath: "stringData.password"
             toFieldPath: "spec.forProvider.administratorLoginPassword"
