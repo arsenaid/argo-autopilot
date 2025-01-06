@@ -6,6 +6,7 @@ spec:
   compositeTypeRef:
     apiVersion: database.example.org/v1alpha1
     kind: CompositeAzureSQLDatabase
+  writeConnectionSecretsToNamespace: crossplane-system
   resources:
     - name: resource-group
       base:

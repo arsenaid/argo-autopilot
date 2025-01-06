@@ -4,6 +4,10 @@ metadata:
   name: my-app-database
   namespace: dev
 spec:
+  compositionRef:
+    name: azuresqldatabase-composition
+  writeConnectionSecretToRef:
+    name: db-conn
   parameters:
     databaseName: mydatabase
     maxSizeGB: 5
