@@ -19,9 +19,6 @@ spec:
             location: East US
           providerConfigRef:
             name: default
-        patches:
-          - fromFieldPath: "metadata.name"
-            toFieldPath: "spec.forProvider.resourceGroupName"
     - name: admin-password
       base:
         apiVersion: v1
@@ -33,9 +30,6 @@ spec:
           type: Opaque
           stringData:
             password: RamenN00dles
-        patches:
-          - fromFieldPath: "stringData.password"
-            toFieldPath: "spec.forProvider.administratorLoginPassword"
     - name: sqlserver
       base:
         apiVersion: sql.azure.upbound.io/v1beta1
@@ -56,9 +50,6 @@ spec:
             version: "12.0"
           providerConfigRef:
             name: default
-      patches:
-        - fromFieldPath: "spec.parameters.databaseName"
-          toFieldPath: "metadata.name"
     - name: sqldatabase
       base:
         apiVersion: sql.azure.upbound.io/v1beta1
