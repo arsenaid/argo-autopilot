@@ -49,10 +49,13 @@ spec:
           providerConfigRef:
             name: default
         patches:
-        - fromFieldPath: "status.atProvider.resourceGroupName"
-          toFieldPath: "spec.forProvider.resourceGroupName"
-          policy:
-            fromFieldPath: Optional
+          - fromFieldPath: "metadata.name"
+            toFieldPath: "spec.forProvider.resourceGroupName"
+            policy:
+              fromFieldPath: Optional
+            transform:
+              - type: string
+                fmt: "resourcegroup-%s"
     - name: sqldatabase
       base:
         apiVersion: sql.azure.upbound.io/v1beta1
