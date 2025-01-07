@@ -19,18 +19,6 @@ spec:
             location: East US
           providerConfigRef:
             name: default
-    - name: admin-password
-      base:
-        apiVersion: iam.aws.upbound.io/v1beta1
-        kind: AccessKey
-        spec:
-          forProvider:
-          writeConnectionSecretToRef:
-            namespace: crossplane-system
-            name: sql-password
-        connectionDetails:
-          - name: password
-            type: FromConnectionSecretKey
     - name: sqlserver
       base:
         apiVersion: sql.azure.upbound.io/v1beta1
