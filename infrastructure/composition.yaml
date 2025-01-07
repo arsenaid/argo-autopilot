@@ -13,7 +13,7 @@ spec:
         kind: ResourceGroup
         metadata:
           annotations: 
-            crossplane.io/external-name: my-resource-group
+            crossplane.io/external-name: example-rg
         spec:
           forProvider:
             location: East US
@@ -36,7 +36,7 @@ spec:
               key: password
               namespace: crossplane-system
             location: East US
-            resourceGroupName: "my-resource-group"
+            resourceGroupName: "example-rg"
             version: "12.0"
           providerConfigRef:
             name: default
