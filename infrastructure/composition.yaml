@@ -9,6 +9,8 @@ spec:
   writeConnectionSecretsToNamespace: crossplane-system
   resources:
     - name: resource-group
+      annotations: 
+        crossplane.io/external-name: my-resource-group
       base:
         apiVersion: azure.upbound.io/v1beta1
         kind: ResourceGroup
@@ -32,8 +34,9 @@ spec:
       base:
         apiVersion: sql.azure.upbound.io/v1beta1
         kind: MSSQLServer
+        annotations: 
+          crossplane.io/external-name: arsen-sqlserver-2025
         metadata:
-          name: arsen-sqlserver-2025
           labels:
             testing.upbound.io/example-name: arsen-test-srv
         spec:
@@ -44,18 +47,10 @@ spec:
               key: password
               namespace: crossplane-system
             location: East US
-            resourceGroupName: ""
+            resourceGroupName: "my-resource-group"
             version: "12.0"
           providerConfigRef:
             name: default
-        patches:
-          - fromFieldPath: "metadata.name"
-            toFieldPath: "spec.forProvider.resourceGroupName"
-            policy:
-              fromFieldPath: Optional
-            transform:
-              - type: string
-                fmt: "resourcegroup-%s"
     - name: sqldatabase
       base:
         apiVersion: sql.azure.upbound.io/v1beta1
