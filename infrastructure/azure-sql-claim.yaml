@@ -5,9 +5,6 @@ metadata:
 spec:
   compositionRef:
     name: azuresql-db-composition
-  writeConnectionSecretToRef:
-    namespace: crossplane-system
-    name: db-conn
   parameters:
     databaseName: mydatabase
     maxSizeGB: 5

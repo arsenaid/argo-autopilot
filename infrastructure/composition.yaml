@@ -6,7 +6,6 @@ spec:
   compositeTypeRef:
     apiVersion: database.example.org/v1alpha1
     kind: Xsql
-  writeConnectionSecretsToNamespace: crossplane-system
   resources:
     - name: resource-group
       base:
@@ -24,6 +23,9 @@ spec:
       base:
         apiVersion: iam.aws.upbound.io/v1beta1
         kind: AccessKey
+        metadata:
+          annotations: 
+            crossplane.io/external-name: my-resource-group
         spec:
           forProvider:
           writeConnectionSecretToRef:
