@@ -7,16 +7,16 @@ spec:
     apiVersion: database.example.org/v1alpha1
     kind: Xsql
   resources:
-    - name: admin-password
-      base:
-        apiVersion: iam.aws.upbound.io/v1beta1
-        kind: AccessKey
-        spec:
-          forProvider:
-            # Removed for brevity
-          writeConnectionSecretToRef:
-            namespace: crossplane-system
-            name: my-secret
+    # - name: admin-password
+    #   base:
+    #     apiVersion: iam.aws.upbound.io/v1beta1
+    #     kind: AccessKey
+    #     spec:
+    #       forProvider:
+    #         # Removed for brevity
+    #       writeConnectionSecretToRef:
+    #         namespace: crossplane-system
+    #         name: my-secret
     - name: resource-group
       base:
         apiVersion: azure.upbound.io/v1beta1
