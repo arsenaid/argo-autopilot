@@ -20,6 +20,18 @@ spec:
             location: East US
           providerConfigRef:
             name: default
+    - name: admin-password
+      base:
+        apiVersion: iam.aws.upbound.io/v1beta1
+        kind: AccessKey
+        spec:
+          forProvider:
+          writeConnectionSecretToRef:
+            namespace: crossplane-system
+            name: sql-password
+        connectionDetails:
+          - name: password
+            type: FromConnectionSecretKey
     - name: sqlserver
       base:
         apiVersion: sql.azure.upbound.io/v1beta1
@@ -35,17 +47,12 @@ spec:
             administratorLoginPasswordSecretRef:
               name: sql-password
               key: password
+              namespace: crossplane-system
             location: East US
             resourceGroupName: "my-resource-group"
             version: "12.0"
           providerConfigRef:
             name: default
-        connectionDetails:
-          - name: "sql-password"
-            key: "password"
-            generate:
-              length: 16
-              charset: "alphanumeric"
     - name: sqldatabase
       base:
         apiVersion: sql.azure.upbound.io/v1beta1
