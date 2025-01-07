@@ -25,7 +25,8 @@ spec:
         apiVersion: v1
         kind: Secret
         metadata:
-          name: sql-password
+          annotations: 
+            crossplane.io/external-name: sql-password
           namespace: crossplane-system
         spec:
           type: Opaque
