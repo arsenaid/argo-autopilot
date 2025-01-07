@@ -7,8 +7,8 @@ metadata:
   namespace: argocd
   labels:
     crossplane.jonashackt.io: infrastructure
-  finalizers:
-    - resources-finalizer.argocd.argoproj.io
+  # finalizers:
+  #   - resources-finalizer.argocd.argoproj.io
 spec:
   project: default
   source:
