@@ -12,8 +12,6 @@ spec:
       base:
         apiVersion: azure.upbound.io/v1beta1
         kind: ResourceGroup
-        metadata:
-          name: my-resource-group
         spec:
           forProvider:
             location: East US
@@ -46,10 +44,15 @@ spec:
               key: password
               namespace: crossplane-system
             location: East US
-            resourceGroupName: my-resource-group
+            resourceGroupName: ""
             version: "12.0"
           providerConfigRef:
             name: default
+        patches:
+        - fromFieldPath: "status.atProvider.resourceGroupName"
+          toFieldPath: "spec.forProvider.resourceGroupName"
+          policy:
+            fromFieldPath: Optional
     - name: sqldatabase
       base:
         apiVersion: sql.azure.upbound.io/v1beta1
