@@ -1,10 +1,10 @@
-# apiVersion: database.example.org/v1alpha1
-# kind: Azuresql
-# metadata:
-#   name: my-app-database
-# spec:
-#   compositionRef:
-#     name: azuresql-db-composition
-#   parameters:
-#     databaseName: mydatabase
-#     maxSizeGB: 5
+apiVersion: database.example.org/v1alpha1
+kind: Azuresql
+metadata:
+  name: my-app-database
+spec:
+  compositionRef:
+    name: azuresql-db-composition
+  parameters:
+    databaseName: mydatabase
+    maxSizeGB: 5
